@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Kamlesh Web Security Tools</h1>
+<form method="POST" action="{{ url_for('index') }}">
+    <div>
+        <label for="url">Enter URL:</label>
+        <input type="text" id="url" name="url" required>
+    </div>
+    <div>
+        <label for="tool">Select Tool:</label>
+        <select id="tool" name="tool" required>
+            <option value="1">CSRF Detection</option>
+            <option value="2">SSRF Detection</option>
+            <option value="3">XXE Detection</option>
+            <option value="4">SQL Injection</option>
+            <option value="5">Run All</option>
+        </select>
+    </div>
+    <div id="additional-params" style="display: none;">
+        <div>
+            <label for="par">Parameter (for SQL Injection):</label>
+            <input type="text" id="par" name="par">
+        </div>
+        <div>
+            <label for="method">Method (GET/POST for SQL Injection):</label>
+            <input type="text" id="method" name="method">
+        </div>
+    </div>
+    <button type="submit">Run Tool</button>
+</form>
+
+<script>
+document.getElementById('tool').addEventListener('change', function() {
+    var additionalParams = document.getElementById('additional-params');
+    if (this.value == '4' || this.value == '5') {
+        additionalParams.style.display = 'block';
+    } else {
+        additionalParams.style.display = 'none';
+    }
+});
+</script>
+
+{% endblock %}

